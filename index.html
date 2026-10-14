@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Comparateur d'images</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app">
+      <section class="topbar">
+        <div>
+          <h1>Comparateur d'images</h1>
+          <p>Identiques, similaires ou différentes avec pHash, SSIM, histogrammes et carte de différences.</p>
+        </div>
+        <button id="compareButton" class="primary" type="button" disabled>Comparer</button>
+      </section>
+
+      <section class="drop-grid" aria-label="Images à comparer">
+        <label class="drop-zone" id="leftDrop">
+          <input id="leftInput" type="file" accept="image/*">
+          <span class="drop-title">Image A</span>
+          <img id="leftPreview" alt="">
+          <span class="drop-hint">Dépose une image ou clique ici</span>
+          <span class="file-meta" id="leftMeta"></span>
+        </label>
+
+        <label class="drop-zone" id="rightDrop">
+          <input id="rightInput" type="file" accept="image/*">
+          <span class="drop-title">Image B</span>
+          <img id="rightPreview" alt="">
+          <span class="drop-hint">Dépose une image ou clique ici</span>
+          <span class="file-meta" id="rightMeta"></span>
+        </label>
+      </section>
+
+      <section class="result-layout" id="resultPanel" hidden>
+        <div class="verdict">
+          <span class="eyebrow">Résultat</span>
+          <strong id="decision">-</strong>
+          <span id="score">-</span>
+        </div>
+
+        <div class="metrics" aria-label="Scores de similarité">
+          <div><span>pHash</span><b id="phashMetric">-</b></div>
+          <div><span>SSIM</span><b id="ssimMetric">-</b></div>
+          <div><span>dHash</span><b id="dhashMetric">-</b></div>
+          <div><span>Histogramme</span><b id="histMetric">-</b></div>
+        </div>
+
+        <div class="diff">
+          <div>
+            <span class="eyebrow">Différences</span>
+            <p>Les zones rouges indiquent les pixels qui changent après normalisation des deux images.</p>
+          </div>
+          <img id="diffImage" alt="Carte de différences">
+        </div>
+      </section>
+
+      <p class="error" id="errorBox" role="alert" hidden></p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
